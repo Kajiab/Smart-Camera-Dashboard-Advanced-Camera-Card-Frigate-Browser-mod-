@@ -1,0 +1,52 @@
+
+type: custom:advanced-camera-card
+title: Smart Cameras
+
+cameras:
+  - camera_entity: camera.front_gate
+    name: Front Gate
+    live_provider: go2rtc
+    priority: 1
+    frigate:
+      url: http://frigate:5000
+    triggers:
+      entities:
+        - binary_sensor.front_gate_person
+
+  - camera_entity: camera.back_yard
+    name: Back Yard
+    live_provider: go2rtc
+    priority: 2
+    frigate:
+      url: http://frigate:5000
+    triggers:
+      entities:
+        - binary_sensor.back_yard_person
+
+view:
+  default: image
+
+  # Render live ONLY on active desktop browser
+  triggers:
+    actions:
+      trigger: live
+      untrigger: image
+    render_entities:
+      - binary_sensor.browser_desktop_active
+      - input_boolean.camera_live
+
+image:
+  mode: snapshot
+  refresh_seconds: 300
+
+live:
+  preload: false
+  lazy_unload: true
+  max_seconds: 60
+
+timeline:
+  enabled: true
+  events:
+    cameras: all
+    media: clips
+    limit: 10
