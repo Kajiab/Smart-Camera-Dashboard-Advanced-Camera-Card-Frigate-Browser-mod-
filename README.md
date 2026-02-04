@@ -1,16 +1,15 @@
+
+This is just personal dashboard. I develop by helping by AI
+
+
 🛡️ Smart Camera Dashboard (Advanced Camera Card + Frigate)
 
-Optimized Home Assistant camera dashboard
-
-Snapshot by default
-
-Live only when needed
-
-Client-aware (Desktop/Mobile aware)
-
-Low network & CPU usage
-
-Supports multiple cameras & events timeline
+  - Optimized Home Assistant camera dashboard
+  - Snapshot by default
+  - Live only when needed
+  - Client-aware (Desktop/Mobile aware)
+  - Low network & CPU usage
+  - Supports multiple cameras & events timeline
 
 📸 UI Overview (Screenshot Description)
 ```mathematica
@@ -31,31 +30,30 @@ Supports multiple cameras & events timeline
 
 Behavior
 
-  Default: snapshot (no live stream)
-  Person detected: live view (max 60s)
-  Click badge: switch active live camera
-  Timeline shows events from all cameras
-  Live stream opens only on active desktop client
+  - Default: snapshot (no live stream)
+  - Person detected: live view (max 60s)
+  - Click badge: switch active live camera
+  - Timeline shows events from all cameras
+  - Live stream opens only on active desktop client
 
 🧩 Requirements
 
-Home Assistant
-Frigate NVR
-go2rtc
-advanced-camera-card (via HACS)
-Browser Mod (via HACS)
-button-card (for badges)
+  - Home Assistant
+  - Frigate NVR
+  - go2rtc
+  - advanced-camera-card (via HACS)
+  - Browser Mod (via HACS)
+  - button-card (for badges)
 
 🧠 Architecture Concept
 
-One main camera card
-Multiple cameras
-Status badges per camera
-Live streaming is client-aware
-No global automation forcing live
+  - One main camera card
+  - Multiple cameras
+  - Status badges per camera
+  - Live streaming is client-aware
+  - No global automation forcing live
 
 1️⃣ Helpers
-
 ```yaml
 input_select:
   camera_active:
@@ -110,6 +108,7 @@ cards:
         entity_id: input_select.camera_active
         option: back_yard
 ```
+
 3️⃣ Advanced Camera Card (Main View)
 ```yaml
 type: custom:advanced-camera-card
@@ -164,6 +163,7 @@ timeline:
     media: clips
     limit: 10
 ```
+
 4️⃣ Automations
 Person Detection → Start Live
 ```yaml
@@ -213,6 +213,7 @@ automation:
         target:
           entity_id: input_boolean.camera_live
 ```
+
 5️⃣ Browser Mod (Client Awareness)
 Required Entities
 
