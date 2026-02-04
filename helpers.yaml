@@ -1,0 +1,15 @@
+input_select:
+  camera_active:
+    name: Active Camera
+    options:
+      - none
+      - front_gate
+      - back_yard
+
+input_boolean:
+  camera_live:
+    name: Camera Live Mode
+
+timer:
+  camera_live_timer:
+    duration: "00:01:00"
