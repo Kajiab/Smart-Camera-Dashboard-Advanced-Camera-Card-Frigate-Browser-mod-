@@ -1,0 +1,34 @@
+#Status badge: show status of each camera
+type: horizontal-stack
+cards:
+  - type: custom:button-card
+    name: Front Gate
+    icon: mdi:cctv
+    entity: binary_sensor.front_gate_person
+    state:
+      - value: "off"
+        color: green
+      - value: "on"
+        color: orange
+    tap_action:
+      action: call-service
+      service: input_select.select_option
+      data:
+        entity_id: input_select.camera_active
+        option: front_gate
+
+  - type: custom:button-card
+    name: Back Yard
+    icon: mdi:cctv
+    entity: binary_sensor.back_yard_person
+    state:
+      - value: "off"
+        color: green
+      - value: "on"
+        color: orange
+    tap_action:
+      action: call-service
+      service: input_select.select_option
+      data:
+        entity_id: input_select.camera_active
+        option: back_yard
